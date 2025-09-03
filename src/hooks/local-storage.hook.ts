@@ -1,5 +1,3 @@
-'use client'
-
 export function useLocalStorage() {
     const getAsString = (name:string) => localStorage.getItem(name)
 
