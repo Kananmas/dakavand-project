@@ -1,11 +1,13 @@
+'use client'
+
 import { useEffect, useState } from "react";
 import { UserContext } from "./user.context";
 import { User } from "@/app/_interface/user.interface";
 import { useLocalStorage } from "@/hooks/local-storage.hook";
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
-    const { getAsValue } = useLocalStorage();
-    const [context, setContext] = useState<User>( {
+    const { getAsValue , set } = useLocalStorage();
+    const [context, setContext] = useState<User>({
         name: "",
         email: "",
         phoneNumber: "",
@@ -13,11 +15,15 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     })
 
     useEffect(() => {
-        setContext(getAsValue('user'))
-    } , [])
+        let value = getAsValue('user')
+        if (value) {
+            setContext(getAsValue('user'))
+        }
+    }, [])
 
     const getter = () => context;
     const setter = (value: User) => {
+        set('user' , value)
         setContext(value)
     };
 

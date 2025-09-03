@@ -1,3 +1,5 @@
+'use client'
+
 import { User } from "@/app/_interface/user.interface";
 import { createContext } from "react";
 
