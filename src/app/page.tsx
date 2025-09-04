@@ -13,7 +13,6 @@ export default function Home() {
 
   const handleClickLogout = () => {
     remove('user')
-    router.push('/login')
   }
 
   useEffect(() => {
@@ -22,7 +21,7 @@ export default function Home() {
   }, [user])
 
   return (
-    <div className="flex flex-col justify-center items-center h-[700px]">
+    <div className="flex flex-col justify-center items-center h-full">
       {
         user.phoneNumber && <img
           className="dark:invert rounded-[50%]"
@@ -32,7 +31,10 @@ export default function Home() {
           src={user.picture}
         />
       }
-      <h1 className="font-bold text-[45px] my-[15px]">{user.name}</h1>
+      <div className="my-[15px]">
+        <div>Welcome Dear</div>
+        <h1 className="font-bold text-[45px]">{user.name}</h1>
+      </div>
       <div>
         <Button label="Logout" onClick={handleClickLogout} />
       </div>

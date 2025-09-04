@@ -1,23 +1,37 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "../../../../hooks/user.hooks";
 import { useRouter } from "next/navigation";
 import { Button } from "@/app/_components/Button";
+import { validatePhone } from "../_local_utils/validate-phone.utils";
 
-const formStyles = "font-sans w-[500px] h-[500px] text-center mx-auto flex flex-col items-center justify-evenly";
+const formStyles = "font-sans h-full text-center mx-auto flex flex-col items-center justify-evenly";
 const inputStyles = "bg-white p-1 my-2 border-[1px] rounded-[12px] border-gray-400";
 
 
 export function PhoneNumberForm() {
     const { userData, setter } = useUser();
     const [phoneNum, setPhoneNum] = useState<string>('')
+    const [error, setError] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const router = useRouter()
 
+    useEffect(() => {
+        if(userData.phoneNumber) {
+            router.push('/')
+        }
+    },[userData])
+
+
     const handleSubmit = async (e: any) => {
         e.preventDefault()
+        if (!validatePhone(phoneNum)) {
+            setError('your phone number must start with +98 or 0 or 0098 and must have 9 digits  after that')
+            return;
+        }
         try {
+            setError('')
             setLoading(true)
             const response: Response = await fetch("https://randomuser.me/api/?results=1&nat=us");
             const result = await response.json();
@@ -35,7 +49,7 @@ export function PhoneNumberForm() {
             }
         }
         catch (e: any) {
-            console.log(e.message)
+            setError(e.message)
         }
         finally {
             setLoading(false)
@@ -60,6 +74,10 @@ export function PhoneNumberForm() {
             />
         </div>
 
-        <Button disabled={loading} label="Submit"/>
+        <Button disabled={loading} label="Submit" />
+
+        {error && <div className="bg-red-500 text-white p-[12px] my-[12px] rounded-[12px]">
+            {error}
+        </div>}
     </form>
 }
