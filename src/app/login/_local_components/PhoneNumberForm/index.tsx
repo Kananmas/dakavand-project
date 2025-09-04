@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useUser } from "../../../../hooks/user.hooks";
 import { useRouter } from "next/navigation";
 import { Button } from "@/app/_components/Button";
@@ -25,7 +25,7 @@ export function PhoneNumberForm() {
     }, [userData])
 
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (!validatePhone(phoneNum)) {
             setError('Phone Number Must Start With +98 or 0 or 0098 And Have 7 Digits After That')
@@ -58,7 +58,7 @@ export function PhoneNumberForm() {
         }
     }
 
-    const handleChangePhoneNumber = (e: { target: { value: string } }) => {
+    const handleChangePhoneNumber = (e: ChangeEvent<HTMLInputElement> ) => {
         const pattern = /^\+?\d{0,14}$/
         if (!pattern.test(e.target.value)) return;
         setPhoneNum(e.target.value)
