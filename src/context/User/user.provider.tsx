@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { UserContext } from "./user.context";
-import { User } from "@/app/_interface/user.interface";
+import { User } from "@/interfaces/user.interface";
 import { useLocalStorage } from "@/hooks/local-storage.hook";
 import { createEmptyUser } from "../../lib/utils/create-empty-user.utils";
 
