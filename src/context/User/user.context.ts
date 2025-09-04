@@ -11,10 +11,9 @@ let userData: User = {
 }
 
 
-const getter = () => userData;
 const setter = (value:User) => {
     userData = {...value , ...userData}
 } 
 
 
-export const UserContext = createContext({getter , setter});
+export const UserContext = createContext({userData , setter});

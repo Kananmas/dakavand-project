@@ -21,13 +21,12 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         }
     }, [])
 
-    const getter = () => context;
     const setter = (value: User) => {
         set('user' , value)
         setContext(value)
     };
 
-    return <UserContext.Provider value={{ getter, setter }}>
+    return <UserContext.Provider value={{ userData:context , setter }}>
         {children}
     </UserContext.Provider>
 
