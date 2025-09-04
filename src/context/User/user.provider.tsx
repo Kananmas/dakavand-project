@@ -14,7 +14,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         const checkForValue = () => {
             let value: User | null = getAsValue('user')
             if (value) {
-                setContext(getAsValue('user'))
+                setContext(value)
                 return
             }
             setContext(createEmptyUser())

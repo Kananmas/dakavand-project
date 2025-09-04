@@ -11,7 +11,7 @@ export function useLocalStorage() {
     }
 
 
-    const set = (name:string , value:any) => {
+    const set = (name:string , value:unknown) => {
         localStorage.setItem(name , JSON.stringify(value));
         dispachSotrageEvent()
     }
