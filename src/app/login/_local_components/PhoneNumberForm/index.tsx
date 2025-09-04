@@ -50,8 +50,10 @@ export function PhoneNumberForm() {
             }
             setError("Something Went Wrong While Logging In")
         }
-        catch (e: any) {
-            setError(e.message)
+        catch (e) {
+            if (e instanceof Error) {
+                setError(e.message)
+            }
         }
         finally {
             setLoading(false)
