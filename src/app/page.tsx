@@ -4,7 +4,7 @@ import { useLocalStorage } from "@/hooks/local-storage.hook";
 import { useUser } from "@/hooks/user.hooks";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { Button } from "./_components/Button";
+import { Button } from "../components/Button";
 
 export default function Home() {
   const router = useRouter();

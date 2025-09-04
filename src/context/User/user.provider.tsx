@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { UserContext } from "./user.context";
 import { User } from "@/app/_interface/user.interface";
 import { useLocalStorage } from "@/hooks/local-storage.hook";
-import { createEmptyUser } from "../local_utils/create-empty-user.utils";
+import { createEmptyUser } from "../../lib/utils/create-empty-user.utils";
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
     const { getAsValue, set } = useLocalStorage();

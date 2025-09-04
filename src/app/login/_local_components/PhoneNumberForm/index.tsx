@@ -3,9 +3,9 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useUser } from "../../../../hooks/user.hooks";
 import { useRouter } from "next/navigation";
-import { Button } from "@/app/_components/Button";
-import { validatePhone } from "../_local_utils/validate-phone.utils";
-import { fetchUserService } from "../_local_services/fetch-user.service";
+import { Button } from "@/components/Button";
+import { validatePhone } from "../../../../lib/utils/validate-phone.utils";
+import { fetchUserService } from "../../../../lib/services/fetch-user.service";
 
 const formStyles = "font-sans h-full text-center mx-auto flex flex-col items-center justify-evenly";
 const inputStyles = "bg-white p-1 my-2 border-[1px] rounded-[12px] border-gray-400";
