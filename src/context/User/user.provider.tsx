@@ -12,7 +12,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
     useEffect(() => {
         const checkForValue = () => {
-            let value: User | null = getAsValue('user')
+            const value: User | null = getAsValue('user')
             if (value) {
                 setContext(value)
                 return
