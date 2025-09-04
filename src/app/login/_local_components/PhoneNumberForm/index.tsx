@@ -85,16 +85,15 @@ export function PhoneNumberForm() {
         {error && <div className={errorBoxStyles}>
             <div className="flex justify-between w-full items-center">
                 <h1 className="font-bold text-[15px] text-left">Error:</h1>
-                <button
+                <Button
                     onClick={() => setError('')}
                     type="button"
+                    label="✕"
                     className="w-8 h-8 flex items-center justify-center rounded-full 
                      text-black
                      cursor-pointer transition-colors"
                     aria-label="Close"
-                >
-                    ✕
-                </button>
+                />
             </div>
             <div>
                 {error}
